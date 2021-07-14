@@ -1,0 +1,40 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<body style="background-color:#ffbf30">
+  <div class="container">
+    {% if todos %}
+    <h1>Here are a list of your current todos:</h1>
+    {% for todo in todos %}
+    <ul>
+      <li>
+        <a href="{% url 'viewtodo' todo.id %}">
+          {% if todo.important %}
+            <b>{{ todo.title }}</b>
+          {% else %}
+            {{ todo.title }}
+            <br>
+          {% endif %}
+        {% if todo.memo %}
+          {{ todo.memo }}
+        {% endif %}
+        <br>
+        {{ todo.created }}
+
+        </a>
+
+      </li>
+    </ul>
+    {% endfor %}
+  </body>
+  {% else %}
+    <h1>Looks like you do not have any todos</h1>
+    <h2>Create your todo list now!</h2>
+
+    {% endif %}
+  </div>
+
+
+
+{% endblock %}
