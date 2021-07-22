@@ -2,28 +2,38 @@
 
 {% block content %}
 
-<body style="background-color:#ffbf30">
+<body style="background-color:#ffcf40">
   <div class="container">
 
     {% if todos %}
-    <h2>Here are your completed items:</h2>
+    <h2>Here are your completed tasks:</h2><br>
     {% for todo in todos %}
     <ul>
       <li>
         <a href="{% url 'viewtodo' todo.id %}">
           {% if todo.important %}
+          <div class="container" style="color: red; background-color: #ffdc73">
             <b>{{ todo.title }}</b>
-          {% else %}
-            {{ todo.title }}
+            <br>
+          {% if todo.memo %}
+            {{ todo.memo }}
           {% endif %}
           <br>
+          {{ todo.datecompleted|date:'M j Y H:i' }}
+          </div>
+
+          {% else %}
+          <div class="container" style="background-color: #ffdc73; color:black">
+            <b>{{ todo.title }}</b>
         {% if todo.memo %}
+          <br>
           {{ todo.memo }}
         {% endif %}
         <br>
         {{ todo.datecompleted|date:'M j Y H:i' }}
-
-        </a>
+      </div>
+        {% endif %}
+    </a>
 
       </li>
     </ul>

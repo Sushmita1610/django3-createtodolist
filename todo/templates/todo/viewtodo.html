@@ -2,26 +2,29 @@
 
 {% block content %}
 
-<body style="background-color:#ffbf00">
+<body style="background-color:#ffcf40">
   <div class="container">
     {{ error }}
 
+  <div class="container text-center" style="display: inline-block">
     <form method="POST">
       {% csrf_token %}
-      {{ form.as_p }}
+      <b>{{ form.as_p }}</b>
       <button type="submit" class="btn btn-info">Save</button>
     </form>
 
+      <form method="POST" action="{% url 'completetodo' todo.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" style="display: inline-block">Complete</button>
+      </form>
 
-    <form method="POST" action="{% url 'completetodo' todo.id %}">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-success">Complete</button>
-    </form>
+      <form method="POST" action="{% url 'deletetodo' todo.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger" style="display: inline-block">Delete</button>
+      </form>
 
-    <form method="POST" action="{% url 'deletetodo' todo.id %}">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
+  </div>
+
   </div>
 
 </body>

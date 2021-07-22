@@ -21,11 +21,12 @@
           <a class="navbar-brand" href="{% url 'completedtodos' %}">Completed</a>
         </li>
         <li class="nav-item navbar-dark">
-            <form action="{% url 'logoutuser' %}" method="POST">
+            <form class="ml-auto" action="{% url 'logoutuser' %}" method="POST">
                 {% csrf_token %}
                 Hello, {{ user.username }}
                 <button type="submit" name="logout" class="btn btn-info">Logout</button>
             </form>
+
         </li>
       </ul>
     </div>

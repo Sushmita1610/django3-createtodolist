@@ -2,27 +2,42 @@
 
 {% block content %}
 
-<body style="background-color:#ffbf30">
+<body style="background-color:#ffcf40">
   <div class="container">
     {% if todos %}
-    <h1>Here are a list of your current todos:</h1>
+    <h2>Here are a list of your current todos:</h2><br>
     {% for todo in todos %}
     <ul>
       <li>
-        <a href="{% url 'viewtodo' todo.id %}">
-          {% if todo.important %}
-            <b>{{ todo.title }}</b>
-          {% else %}
-            {{ todo.title }}
-            <br>
-          {% endif %}
-        {% if todo.memo %}
-          {{ todo.memo }}
-        {% endif %}
-        <br>
-        {{ todo.created }}
+        <div class="container">
+          <a href="{% url 'viewtodo' todo.id %}">
+            {% if todo.important %}
+              <div class="container" style="color: red; background-color: #ffdc73">
+                  <b>{{ todo.title }}</b>
+                  {% if todo.memo %}
+                    <br>
+                    {{ todo.memo }}
+                  {% endif %}
+                  <br>
+                  {{ todo.created }}
+              </div>
+            {% else %}
+            <div class="container" style="color: black; background-color: #ffdc73">
+              <b>{{ todo.title }}</b>
+              <br>
+              {% if todo.memo %}
+                {{ todo.memo }}
+              {% endif %}
+              <br>
+              {{ todo.created }}
+            </div>
 
-        </a>
+            {% endif %}
+
+
+          </a>
+        </div>
+
 
       </li>
     </ul>

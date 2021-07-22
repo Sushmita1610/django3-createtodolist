@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<body style="background-color:#ffbf00">
-  <div class="container">
-    <h1>Create Todo</h1>
+<body style="background-color:#ffcf40">
+  <div class="container text-center">
+    <h2>Create an item in your todo list below:</h2><br>
 
     <h2>{{ error }}</h2>
 
     <form method="POST">
       {% csrf_token %}
-      {{ form.as_p }}
+      <b>{{ form.as_p }}</b>
       <button type="submit" class="btn btn-info">Save</button>
     </form>
   </div>
